@@ -37,19 +37,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        this.musica.stop();
+        this.musica.pause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("TAG",this.musica.isPlaying()?"true":"false");
     }
 
     public void clicar(View view){
         switch (view.getId()){
             case R.id.pedra :
-                Log.d("TAG", "Pedra");
                 this.player.setImageResource(R.drawable.pedra);
                 this.player.setTag(R.id.pedra);
                 animacao();
                 break;
             case R.id.papel :
-                Log.d("TAG", "Papel");
                 this.player.setImageResource(R.drawable.papel);
                 this.player.setTag(R.id.papel);
                 animacao();
@@ -58,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 this.player.setImageResource(R.drawable.tesoura);
                 this.player.setTag(R.id.tesoura);
                 animacao();
-                Log.d("TAG", "Tesoura");
                 break;
         }
     }
